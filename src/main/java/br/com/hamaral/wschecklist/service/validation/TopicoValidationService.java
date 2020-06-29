@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.hamaral.wschecklist.domain.Topico;
 import br.com.hamaral.wschecklist.domain.dto.TopicoNewDTO;
+import br.com.hamaral.wschecklist.domain.dto.TopicoUpdateDTO;
 import br.com.hamaral.wschecklist.service.TopicoService;
 import br.com.hamaral.wschecklist.service.util.ExceptionBuilderService;
 import br.com.hamaral.wschecklist.service.validation.util.Validator;
@@ -55,4 +56,11 @@ public class TopicoValidationService {
 		validator.validateOne(validateTopicoByNome(topicoNewDTO.getNome(), 0));
 		validator.validateResult(validator);
 	}
+
+	public void validateUpdateTopico(TopicoUpdateDTO topicoUpdateDTO, Integer id) {
+		Validator validator = new Validator();
+		validator.validateOne(validateTopicoByNome(topicoUpdateDTO.getNome(), id));
+		validator.validateResult(validator);
+	}
+
 }
