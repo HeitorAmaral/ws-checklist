@@ -1,13 +1,12 @@
 package br.com.hamaral.wschecklist.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+import br.com.hamaral.wschecklist.service.util.ConverterService;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
@@ -20,25 +19,33 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(of = { "id" }, callSuper = false)
+@EqualsAndHashCode(of = {"id"}, callSuper = false)
 public class Topico implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(position = 1)
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @ApiModelProperty(position = 1)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	@ApiModelProperty(position = 2)
-	@Column(nullable = false)
-	private String nome;
+    @ApiModelProperty(position = 2)
+    @Column(nullable = false)
+    private String nome;
 
-	@ApiModelProperty(position = 3)
-	@Column(nullable = false)
-	private Boolean finalizado;
+    @ApiModelProperty(position = 4)
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "Brazil/East")
+    private Date dataCriacao;
 
-	public Topico(String nome) {
-		this.nome = nome;
-		this.finalizado = false;
-	}
+    @ApiModelProperty(position = 5)
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "Brazil/East")
+    private Date dataConclusao;
+
+    public Topico(String nome, String dataCriacao) {
+        ConverterService converterService = new ConverterService();
+        this.nome = nome;
+        this.dataCriacao = converterService.stringToDate(dataCriacao);
+    }
 }
