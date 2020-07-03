@@ -19,11 +19,11 @@ public class TopicoUpdateDTO implements Serializable {
 
     @ApiModelProperty(position = 2, required = true)
     @NotBlank(message = "É obrigatório inserir a Data de Criação!")
-    @Pattern(regexp = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9] (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$", message = "É obrigatório inserir a Data no padrão DD/MM/AAAA HH:MM:SS")
+    @Pattern(regexp = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$", message = "É obrigatório inserir a Data no padrão DD/MM/AAAA")
     private String dataCriacao;
 
     @ApiModelProperty(position = 3, required = false)
     @NotBlank(message = "É obrigatório inserir a Data de Conclusão!")
-    @Pattern(regexp = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9] (00|[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9])$", message = "É obrigatório inserir a Data no padrão DD/MM/AAAA HH:MM:SS")
+    @Pattern(regexp = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$", message = "É obrigatório inserir a Data no padrão DD/MM/AAAA")
     private String dataConclusao;
 }

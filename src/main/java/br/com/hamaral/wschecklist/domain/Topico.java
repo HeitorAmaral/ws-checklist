@@ -35,12 +35,12 @@ public class Topico implements Serializable {
     @ApiModelProperty(position = 4)
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "Brazil/East")
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "Brazil/East")
     private Date dataCriacao;
 
     @ApiModelProperty(position = 5)
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "Brazil/East")
+    @JsonFormat(pattern = "dd/MM/yyyy", timezone = "Brazil/East")
     private Date dataConclusao;
 
     public Topico(String nome, String dataCriacao) {
